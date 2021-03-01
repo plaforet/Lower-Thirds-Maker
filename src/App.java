@@ -30,6 +30,7 @@ public class App extends JFrame {
 	private JTextField description1;
 	private JTextField description2;
 	private JTextField lowerThird1;
+	private File path = new File("files\\"); 
 	File[] updateFiles = {new File("files\\Title.txt"), new File("files\\Lower Third 1.txt"),
 			new File("files\\Description 1.txt"), new File("files\\Lower Third 2.txt"),
 			new File("files\\Description 2.txt")};
@@ -38,6 +39,9 @@ public class App extends JFrame {
 	private int xx, xy;
 
 	private void updateAll() {
+		if(!path.exists()) {
+			path.mkdir();
+		}
 		String[] updateText = {titleText.getText(), lowerThird1.getText(), description1.getText(),
 				lowerThird2.getText(), description2.getText()};
 		for (int i = 0; i < updateText.length; i++) {
@@ -46,6 +50,9 @@ public class App extends JFrame {
 	}
 	
 	private void updatePlaceholder() {
+		if(!path.exists()) {
+			path.mkdir();
+		}
 		String[] updateText = {"Title", "Lower Third 1", "Description 1",
 				"Lower Third 2", "Description 2"};
 		for (int i = 0; i < updateText.length; i++) {
@@ -70,6 +77,7 @@ public class App extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				
 				try {
 					App frame = new App();
 					frame.setUndecorated(true);
